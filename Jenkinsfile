@@ -2,36 +2,34 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven_3'
-        jdk 'JDK11'
+        jdk 'JDK-17'  // Utilise le JDK 17 que tu as configuré dans Jenkins
     }
 
     stages {
-        stage('Checkout') {
+        stage('Checkout SCM') {
             steps {
-                git branch: 'main',
-                    url: 'https://github.com/mohamedachrefkachai/DEVOPS_Med_achref_kachai.git',
-                    credentialsId: 'gh-token-achref'
+                checkout scm
             }
         }
 
         stage('Build - Skip tests') {
             steps {
+                // Vérifie la version de Java pour s'assurer que Java 17 est utilisé
+                sh 'java -version'
+
+                // Compile avec Maven sans tests
                 sh 'mvn clean package -DskipTests'
             }
         }
-
+        
         stage('Archive Artifact') {
             steps {
-                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
+                // Archiver les artefacts si nécessaire
             }
         }
     }
 
     post {
-        success {
-            echo 'Build réussi ✔️'
-        }
         failure {
             echo 'Échec ❌'
         }
