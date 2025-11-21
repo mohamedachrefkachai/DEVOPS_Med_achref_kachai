@@ -14,17 +14,14 @@ pipeline {
 
         stage('Build - Skip tests') {
             steps {
-                // Vérifie la version de Java pour s'assurer que Java 17 est utilisé
-                sh 'java -version'
-
-                // Compile avec Maven sans tests
+                sh 'java -version'  // Vérifie la version de Java
                 sh 'mvn clean package -DskipTests'
             }
         }
-        
+
         stage('Archive Artifact') {
             steps {
-                // Archiver les artefacts si nécessaire
+                // Archive les artefacts ici si nécessaire
             }
         }
     }
