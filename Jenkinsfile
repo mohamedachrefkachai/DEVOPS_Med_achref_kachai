@@ -4,6 +4,7 @@ pipeline {
     // Utiliser JDK-17 pour l'environnement de build
     tools {
         jdk 'JDK-17'  // Assurez-vous que 'JDK-17' est configuré dans Jenkins
+        maven 'M3"
     }
 
     environment {
