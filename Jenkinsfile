@@ -5,6 +5,7 @@ pipeline {
     tools {
         jdk 'JDK-17'  // Assurez-vous que 'JDK-17' est configuré dans Jenkins
         maven 'M3'
+        git 'Git'
     }
 
     environment {
