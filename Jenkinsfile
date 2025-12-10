@@ -3,15 +3,15 @@ pipeline {
 
     // Utiliser JDK-17 pour l'environnement de build
     tools {
-        jdk 'JDK-17'  // Assurez-vous que 'JDK-17' est configuré dans Jenkins
-        maven 'M3'
+        jdk 'JAVA_HOME'  // Assurez-vous que 'JDK-17' est configuré dans Jenkins
+        maven 'M2_HOME'
         git 'Git'
     }
 
     environment {
         // Définir des variables d'environnement si nécessaire
         // Par exemple, définir MAVEN_HOME si nécessaire pour Maven
-        MAVEN_HOME = tool name: 'M3', type: 'ToolLocationNodeProperty'
+        MAVEN_HOME = tool name: 'M2_HOME', type: 'ToolLocationNodeProperty'
     }
 
     stages {
